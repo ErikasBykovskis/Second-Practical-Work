@@ -9,18 +9,18 @@ namespace mob_ireng
     class mobilieji_irenginiai
     {
         public int id;
-        public string gamintojas;
-        public string modelis;
-        public string garantijos_instrukcija;
+        public int gamintojo_id;
+        public int modelio_id;
+        public int garantijos_id;
         public int paveikslelio_id;
         public double kaina;
 
-        public mobilieji_irenginiai(int id, string gamintojas, string modelis, string garantijos_instrukcija, int paveikslelio_id, double kaina)
+        public mobilieji_irenginiai(int id, int gamintojo_id, int modelio_id, int garantijos_id, int paveikslelio_id, double kaina)
         {
             this.id = id;
-            this.gamintojas = gamintojas;
-            this.modelis = modelis;
-            this.garantijos_instrukcija = garantijos_instrukcija;
+            this.gamintojo_id = gamintojo_id;
+            this.modelio_id = modelio_id;
+            this.garantijos_id = garantijos_id;
             this.paveikslelio_id = paveikslelio_id;
             this.kaina = kaina;
         }
