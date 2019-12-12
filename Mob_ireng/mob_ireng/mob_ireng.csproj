@@ -65,6 +65,8 @@
     <Compile Include="modelio_repository.cs" />
     <Compile Include="modelis.cs" />
     <Compile Include="paveiksleliu_repository.cs" />
+    <Compile Include="preke.cs" />
+    <Compile Include="prekiu_repository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

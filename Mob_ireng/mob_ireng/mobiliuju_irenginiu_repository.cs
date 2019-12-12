@@ -40,6 +40,11 @@ namespace mob_ireng
                 }
             }
         }
+
+        public List<mobilieji_irenginiai> get_mobiliuju_irenginiu_sarasu_id()
+        {
+            return mobiliuju_irenginiu_sarasu_id;
+        }
         
     }
 }
