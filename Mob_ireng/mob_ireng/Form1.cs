@@ -20,7 +20,7 @@ namespace mob_ireng
         Label[] labels2 = new Label[100];
         Label[] labels3 = new Label[100];
         Label[] labels4 = new Label[100];
-
+        Form2 f2;
         public int height = 0;
         public int width = 0;
         public int countnumber = 0;
@@ -248,6 +248,53 @@ namespace mob_ireng
         }
 
         private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            f2 = new Form2();
+            f2.krepseliosarasas = this.krepseliosarasas;
+            f2.krepseliocountnumber = this.krepseliocountnumber;
+            f2.FormClosed += new FormClosedEventHandler(f2_FormClosed);
+            f2.ShowDialog();
+        }
+
+        private void f2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            done = f2.done;
+            atidaryti = f2.atidaryti;
+            if (done == 1)
+            {
+                krepseliocountnumber = 0;
+                label3.Text = krepseliocountnumber.ToString();
+                krepseliosarasas.Clear();
+            }
+            else
+            {
+                krepseliocountnumber = f2.krepseliocountnumber;
+                label3.Text = krepseliocountnumber.ToString();
+            }
+            krepseliosarasas = f2.krepseliosarasas;
+            if (atidaryti == 1)
+            {
+                f2 = new Form2();
+                f2.krepseliosarasas = this.krepseliosarasas;
+                f2.krepseliocountnumber = this.krepseliocountnumber;
+                f2.FormClosed += new FormClosedEventHandler(f2_FormClosed);
+                f2.ShowDialog();
+            }
+            else this.Show();
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
         {
 
         }

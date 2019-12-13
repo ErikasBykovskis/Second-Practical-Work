@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mob_ireng
 {
-    class Krepselis
+    public class Krepselis
     {
         public string pavadinimas;
         public double kaina;
