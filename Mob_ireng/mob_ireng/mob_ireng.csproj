@@ -54,6 +54,8 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="Krepselis.cs" />
+    <Compile Include="naudotojas.cs" />
+    <Compile Include="naudotoju_repository.cs" />
     <Compile Include="paveikslelis.cs" />
     <Compile Include="gamintojas.cs" />
     <Compile Include="gamintoju_repository.cs" />

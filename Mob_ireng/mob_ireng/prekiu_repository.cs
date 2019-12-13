@@ -21,7 +21,6 @@ namespace mob_ireng
         public string laikinas_preke_garantijos_instrukcija; //+
         public string laikinas_preke_garantijos_galiojimo_laiko_baigimo_data; //+
         public string laikinas_preke_paveikslelis; //+
-        public double laikinas_preke_kaina; //+
 
         public void set_prekiu_sarasas()
         {
