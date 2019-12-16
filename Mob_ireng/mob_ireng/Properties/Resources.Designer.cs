@@ -73,6 +73,16 @@ namespace mob_ireng.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mano_aplinka_logo {
+            get {
+                object obj = ResourceManager.GetObject("mano_aplinka_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap megabyte_logo {
             get {
                 object obj = ResourceManager.GetObject("megabyte_logo", resourceCulture);

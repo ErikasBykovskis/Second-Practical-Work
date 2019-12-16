@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mob_ireng
 {
-    class naudotojas
+    public class naudotojas
     {
         public int id;
         public string vardas;

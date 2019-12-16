@@ -21,6 +21,10 @@ namespace mob_ireng
         Label[] labels3 = new Label[100];
         Label[] labels4 = new Label[100];
         Form2 f2;
+        Form3 f3;
+        Form6 f6;
+        Form8 f8;
+        public int naudotojas_prisijunges = 0;
         public int height = 0;
         public int width = 0;
         public int countnumber = 0;
@@ -35,6 +39,21 @@ namespace mob_ireng
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            refresh();
+        }
+
+        private void refresh()
+        {
+            if (naudotojas_prisijunges > 0)
+            {
+                label5.Text = "Atsijungti";
+                label5.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                label5.Text = "Prisijungti/Registruotis";
+                label5.ForeColor = System.Drawing.Color.Green;
+            }
             prekes.set_prekiu_sarasas();
             List<preke> prekiu_sarasas = prekes.get_prekiu_sarasas();
             int j = 1;
@@ -124,7 +143,6 @@ namespace mob_ireng
                 }
                 else
                 {
-
                     var lbl = new Label();
                     labels[i] = lbl;
                     lbl.Name = Convert.ToString(("lbl_" + i));
@@ -256,6 +274,7 @@ namespace mob_ireng
         {
             this.Hide();
             f2 = new Form2();
+            f2.naudotojas_prisijunges = this.naudotojas_prisijunges;
             f2.krepseliosarasas = this.krepseliosarasas;
             f2.krepseliocountnumber = this.krepseliocountnumber;
             f2.FormClosed += new FormClosedEventHandler(f2_FormClosed);
@@ -264,6 +283,7 @@ namespace mob_ireng
 
         private void f2_FormClosed(object sender, FormClosedEventArgs e)
         {
+            naudotojas_prisijunges = f2.naudotojas_prisijunges;
             done = f2.done;
             atidaryti = f2.atidaryti;
             if (done == 1)
@@ -295,6 +315,104 @@ namespace mob_ireng
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox4_Click(object sender, EventArgs e) //mano_aplinka
+        {
+            if (naudotojas_prisijunges < 1)
+            {
+                this.Hide();
+                f3 = new Form3();
+                f3.naudotojas_prisijunges = this.naudotojas_prisijunges;
+                f3.FormClosed += new FormClosedEventHandler(f3_FormClosed);
+                f3.ShowDialog();
+            }
+            else if (naudotojas_prisijunges > 1)
+            {
+                this.Hide();
+                f6 = new Form6();
+                f6.naudotojas_prisijunges = this.naudotojas_prisijunges;
+                f6.FormClosed += new FormClosedEventHandler(f6_FormClosed);
+                f6.ShowDialog();
+            }
+            else
+            {
+                this.Hide();
+                f8 = new Form8();
+                f8.naudotojas_prisijunges = this.naudotojas_prisijunges;
+                f8.FormClosed += new FormClosedEventHandler(f8_FormClosed);
+                f8.ShowDialog();
+            }
+        }
+
+        private void f8_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            naudotojas_prisijunges = f8.naudotojas_prisijunges;
+            if (naudotojas_prisijunges > 0)
+            {
+                label5.Text = "Atsijungti";
+                label5.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                label5.Text = "Prisijungti/Registruotis";
+                label5.ForeColor = System.Drawing.Color.Green;
+            }
+            this.Show();
+        }
+
+        private void f6_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            naudotojas_prisijunges = f6.naudotojas_prisijunges;
+            if (naudotojas_prisijunges > 0)
+            {
+                label5.Text = "Atsijungti";
+                label5.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                label5.Text = "Prisijungti/Registruotis";
+                label5.ForeColor = System.Drawing.Color.Green;
+            }
+            this.Show();
+        }
+
+        private void f3_FormClosed (object sender, FormClosedEventArgs e)
+        {
+            naudotojas_prisijunges = f3.naudotojas_prisijunges;
+            if (naudotojas_prisijunges > 0)
+            {
+                label5.Text = "Atsijungti";
+                label5.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                label5.Text = "Prisijungti/Registruotis";
+                label5.ForeColor = System.Drawing.Color.Green;
+            }
+            this.Show();
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+            if (naudotojas_prisijunges < 1)
+            {
+                this.Hide();
+                f3 = new Form3();
+                f3.naudotojas_prisijunges = this.naudotojas_prisijunges;
+                f3.FormClosed += new FormClosedEventHandler(f3_FormClosed);
+                f3.ShowDialog();
+            }
+        }
+
+        private void Label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label2_Click(object sender, EventArgs e)
         {
 
         }

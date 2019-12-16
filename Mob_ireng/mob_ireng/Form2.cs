@@ -14,6 +14,7 @@ namespace mob_ireng
     public partial class Form2 : Form
     {
         public List<Krepselis> krepseliosarasas = new List<Krepselis>();
+        public int naudotojas_prisijunges;
         Label[] labels = new Label[100];
         Label[] labels2 = new Label[100];
         Label[] labels3 = new Label[100];
@@ -32,6 +33,17 @@ namespace mob_ireng
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            if (naudotojas_prisijunges > 0)
+            {
+                label5.Text = "Atsijungti";
+                label5.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                label5.Text = "Prisijungti/Registruotis";
+                label5.ForeColor = System.Drawing.Color.Green; 
+            }
+
             int height = 0;
             int j = 0;
 

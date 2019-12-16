@@ -7,10 +7,10 @@ using MySql.Data.MySqlClient;
 
 namespace mob_ireng
 {
-    class naudotoju_repository
+    public class naudotojo_repository
     {
-        List<naudotojas> naudotoju_sarasas = new List<naudotojas>();
-        public void set_naudotoju_sarasas()
+        List<naudotojas> prisijunges_naudotojas = new List<naudotojas>();
+        public void set_naudotojas(string username, string password)
         {
             MySqlConnection connection = new MySqlConnection();
             try
@@ -23,7 +23,10 @@ namespace mob_ireng
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    naudotoju_sarasas.Add(new naudotojas(Convert.ToInt32(reader["naudotojo_id"]), Convert.ToString(reader["vardas"]), Convert.ToString(reader["pavarde"]), Convert.ToString(reader["username"]), Convert.ToString(reader["password"]), Convert.ToString(reader["el_pastas"]), Convert.ToString(reader["telefonas"])));
+                    if (reader["username"].ToString() == username && reader["password"].ToString() == password)
+                    {
+                        prisijunges_naudotojas.Add(new naudotojas(Convert.ToInt32(reader["naudotojo_id"]), Convert.ToString(reader["vardas"]), Convert.ToString(reader["pavarde"]), Convert.ToString(reader["username"]), Convert.ToString(reader["password"]), Convert.ToString(reader["el_pastas"]), Convert.ToString(reader["telefonas"])));
+                    }
                 }
             }
             catch (Exception ex)
@@ -39,12 +42,28 @@ namespace mob_ireng
             }
         }
 
-        public List<naudotojas> get_naudotoju_sarasas()
+        public List<naudotojas> get_naudotojas()
         {
-            return naudotoju_sarasas;
+            return prisijunges_naudotojas;
         }
 
-        public void insert_naudotoju_sarasas(string vardas, string pavarde, string username, string password, string el_pastas, string telefonas)
+        public void insert_naudotojas(string vardas, string pavarde, string username, string password, string el_pastas, string telefonas)
+        {
+            MySqlConnection cnn;
+            string connectionString = "server = 127.0.0.1; uid = root; pwd = Materlink259874; database = mob_ireng";
+            cnn = new MySqlConnection(connectionString);
+            cnn.Open();
+            MySqlCommand command;
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            string sql = "insert into naudotojas (vardas, pavarde, username, password, el_pastas, telefonas) values ('" + vardas + "', '" + pavarde + "', '" + username + "', '" + password + "', '" + el_pastas + "', '" + telefonas + "');";
+            command = new MySqlCommand(sql, cnn);
+            adapter.InsertCommand = new MySqlCommand(sql, cnn);
+            adapter.InsertCommand.ExecuteNonQuery();
+            command.Dispose();
+            cnn.Close();
+        }
+
+        public void set_naudotojas_by_id(int id)
         {
             MySqlConnection connection = new MySqlConnection();
             try
@@ -53,7 +72,15 @@ namespace mob_ireng
                 connection.Open();
                 MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
-                command.CommandText = "insert into naudotojas values ('" + vardas + "', '" + pavarde + "', '" + username + "', '" + password + "', '" + el_pastas + "', '" + telefonas + "');";
+                command.CommandText = "select * from naudotojas where naudotojo_id = '" + id + "';";
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (Convert.ToInt32(reader["naudotojo_id"]) == id)
+                    {
+                        prisijunges_naudotojas.Add(new naudotojas(Convert.ToInt32(reader["naudotojo_id"]), Convert.ToString(reader["vardas"]), Convert.ToString(reader["pavarde"]), Convert.ToString(reader["username"]), Convert.ToString(reader["password"]), Convert.ToString(reader["el_pastas"]), Convert.ToString(reader["telefonas"])));
+                    }
+                }
             }
             catch (Exception ex)
             {
