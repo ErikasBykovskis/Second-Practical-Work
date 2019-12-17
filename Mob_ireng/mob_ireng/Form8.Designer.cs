@@ -60,6 +60,7 @@
             this.label5.Size = new System.Drawing.Size(57, 19);
             this.label5.TabIndex = 19;
             this.label5.Text = "Unsigned";
+            this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
             // label2
             // 
@@ -102,6 +103,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
             // 
             // pictureBox1
             // 

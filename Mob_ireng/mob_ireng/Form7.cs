@@ -22,7 +22,16 @@ namespace mob_ireng
 
         private void Form7_Load(object sender, EventArgs e)
         {
-
+            if (naudotojas_prisijunges > 0)
+            {
+                label5.Text = "Atsijungti";
+                label5.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                label5.Text = "Prisijungti/Registruotis";
+                label5.ForeColor = System.Drawing.Color.Green;
+            }
         }
 
         private void Label4_Click(object sender, EventArgs e)
@@ -47,7 +56,7 @@ namespace mob_ireng
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -61,7 +70,7 @@ namespace mob_ireng
 
         private void f8_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            this.Close();
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -75,7 +84,16 @@ namespace mob_ireng
 
         private void f9_FormClosed(object sender, FormClosedEventArgs e)
         {
+            this.Close();
+        }
 
+        private void Label5_Click(object sender, EventArgs e)
+        {
+            if (naudotojas_prisijunges > 0)
+            {
+                naudotojas_prisijunges = 0;
+                this.Close();
+            }
         }
     }
 }

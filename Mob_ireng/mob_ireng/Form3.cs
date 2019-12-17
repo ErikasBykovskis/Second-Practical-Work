@@ -35,19 +35,9 @@ namespace mob_ireng
             naudotojas_prisijunges = f4.naudotojas_prisijunges;
             if (naudotojas_prisijunges > 0)
             {
-                label5.Text = "Atsijungti";
-                label5.ForeColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                label5.Text = "Prisijungti/Registruotis";
-                label5.ForeColor = System.Drawing.Color.Green;
-            }
-            if (naudotojas_prisijunges > 0)
-            {
                 this.Close();
             }
-            else this.Show();
+            else this.ShowDialog();
         }
 
         private void Button2_Click(object sender, EventArgs e) //registracija
@@ -66,7 +56,7 @@ namespace mob_ireng
             {
                 this.Close();
             }
-            else this.Show();
+            else this.ShowDialog();
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -81,16 +71,12 @@ namespace mob_ireng
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            if (naudotojas_prisijunges > 0)
-            {
-                label5.Text = "Atsijungti";
-                label5.ForeColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                label5.Text = "Prisijungti/Registruotis";
-                label5.ForeColor = System.Drawing.Color.Green;
-            }
+
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

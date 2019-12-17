@@ -22,16 +22,7 @@ namespace mob_ireng
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            if (naudotojas_prisijunges > 0)
-            {
-                label5.Text = "Atsijungti";
-                label5.ForeColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                label5.Text = "Prisijungti/Registruotis";
-                label5.ForeColor = System.Drawing.Color.Green;
-            }
+
         }
 
         private void TextBox6_TextChanged(object sender, EventArgs e)
@@ -90,6 +81,11 @@ namespace mob_ireng
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Label5_Click_1(object sender, EventArgs e)
         {
 
         }

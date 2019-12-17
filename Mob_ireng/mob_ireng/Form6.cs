@@ -39,5 +39,24 @@ namespace mob_ireng
             label8.Text = naudotojo_sarasas[0].el_pastas;
             label9.Text = naudotojo_sarasas[0].telefonas;
         }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+            if (naudotojas_prisijunges > 0)
+            {
+                naudotojas_prisijunges = 0;
+                this.Close();
+            }
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void PictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

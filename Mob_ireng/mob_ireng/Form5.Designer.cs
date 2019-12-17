@@ -46,7 +46,6 @@
             this.textBoxvardas = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -229,17 +228,6 @@
             this.label9.Text = "Vardas:";
             this.label9.Click += new System.EventHandler(this.Label9_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(284, 41);
-            this.label5.MaximumSize = new System.Drawing.Size(1000, 1000);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 19);
-            this.label5.TabIndex = 47;
-            this.label5.Text = "Unsigned";
-            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,7 +235,6 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1924, 859);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxpavarde);
             this.Controls.Add(this.textBoxvardas);
             this.Controls.Add(this.label8);
@@ -299,6 +286,5 @@
         private System.Windows.Forms.TextBox textBoxvardas;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label5;
     }
 }

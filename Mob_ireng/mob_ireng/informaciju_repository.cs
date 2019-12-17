@@ -107,5 +107,30 @@ namespace mob_ireng
             command.Dispose();
             cnn.Close();
         }
+
+        public void delete_informaciju_sarasas(string modelis)
+        {
+            modeliai.set_modeliu_sarasas();
+            modeliu_sarasas = modeliai.get_modeliu_sarasas();
+            for (int i = 0; i < modeliu_sarasas.Count; i++)
+            {
+                if (modelis == modeliu_sarasas[i].pavadinimas)
+                {
+                    laikinas_modelio_id = modeliu_sarasas[i].id;
+                }
+            }
+            MySqlConnection cnn;
+            string connectionString = "server = 127.0.0.1; uid = root; pwd = Materlink259874; database = mob_ireng";
+            cnn = new MySqlConnection(connectionString);
+            cnn.Open();
+            MySqlCommand command;
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            string sql = "delete from mobilieji_irenginiai where modelis_modelio_id = '" + laikinas_modelio_id.ToString() + "';";
+            command = new MySqlCommand(sql, cnn);
+            adapter.InsertCommand = new MySqlCommand(sql, cnn);
+            adapter.InsertCommand.ExecuteNonQuery();
+            command.Dispose();
+            cnn.Close();
+        }
     }
 }

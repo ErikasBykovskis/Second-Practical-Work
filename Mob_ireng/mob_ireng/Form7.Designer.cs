@@ -51,6 +51,7 @@
             this.label5.Size = new System.Drawing.Size(57, 19);
             this.label5.TabIndex = 38;
             this.label5.Text = "Unsigned";
+            this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
             // label2
             // 

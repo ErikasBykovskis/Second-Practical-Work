@@ -14,6 +14,9 @@ namespace mob_ireng
     public partial class Form2 : Form
     {
         public List<Krepselis> krepseliosarasas = new List<Krepselis>();
+        Form3 f3;
+        Form7 f7;
+        Form6 f6;
         public int naudotojas_prisijunges;
         Label[] labels = new Label[100];
         Label[] labels2 = new Label[100];
@@ -21,6 +24,7 @@ namespace mob_ireng
         Label[] labels4 = new Label[100];
         Label[] labels5 = new Label[100];
         Button[] buttons = new Button[100];
+        Form10 f10;
         public int krepseliocountnumber;
         public int delete = 0;
         public int done = 0;
@@ -151,31 +155,61 @@ namespace mob_ireng
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string path = @"C:\Users\12349\Documents\Cheque.txt";
-            string data = DateTime.Now.ToString("dd/MM/yyyy") + Environment.NewLine;
-            File.WriteAllText(path, data);
-            for (int i = 0; i < krepseliosarasas.Count; i++)
+            if (naudotojas_prisijunges == 0)
             {
-                string createText = krepseliosarasas[i].pavadinimas + "   " + krepseliosarasas[i].kaina + " Eur   x" + krepseliosarasas[i].kiekis + Environment.NewLine;
-                File.AppendAllText(path, createText);
+                MessageBox.Show("Reikia ispirmo prisijungti.");
             }
-            double bepvm = 0;
-            for (int i = 0; i < krepseliosarasas.Count; i++)
+            else
             {
-                bepvm = bepvm + krepseliosarasas[i].ApskaiciuotaKainaBePvm();
+                this.Close();
+                f10 = new Form10();
+                double bepvm = 0;
+                for (int i = 0; i < krepseliosarasas.Count; i++)
+                {
+                    bepvm = bepvm + krepseliosarasas[i].ApskaiciuotaKainaBePvm();
+                }
+                double supvm = 0;
+                for (int i = 0; i < krepseliosarasas.Count; i++)
+                {
+                    supvm = supvm + krepseliosarasas[i].ApskaiciuotaKainaSuPvm();
+                }
+                f10.supvm = supvm;
+                f10.bepvm = bepvm;
+                f10.naudotojas_prisijunges = this.naudotojas_prisijunges;
+                f10.krepseliosarasas = this.krepseliosarasas;
+                f10.FormClosed += new FormClosedEventHandler(f10_FormClosed);
+                f10.ShowDialog();
             }
-            string createbepvm = Convert.ToString(bepvm) + " Eur" + Environment.NewLine;
-            File.AppendAllText(path, createbepvm);
-            double supvm = 0;
-            for (int i = 0; i < krepseliosarasas.Count; i++)
-            {
-                supvm = supvm + krepseliosarasas[i].ApskaiciuotaKainaSuPvm();
-            }
-            string createsupvm = Convert.ToString(supvm) + " Eur" + Environment.NewLine;
-            File.AppendAllText(path, createsupvm);
-            MessageBox.Show("Užsakymas patvirtintas\n\nČėkis išsaugotas C:\\Users\\12349\\Documents\\Cheque.txt");
-            done = 1;
-            this.Close();
+        }
+
+        private void f10_FormClosed(object sender, FormClosedEventArgs e)
+        {
+                f10.naudotojas_prisijunges = this.naudotojas_prisijunges;
+                string path = @"C:\Users\12349\Documents\Cheque.txt";
+                string data = DateTime.Now.ToString("dd/MM/yyyy") + Environment.NewLine;
+                File.WriteAllText(path, data);
+                for (int i = 0; i < krepseliosarasas.Count; i++)
+                {
+                    string createText = krepseliosarasas[i].pavadinimas + "   " + krepseliosarasas[i].kaina + " Eur   x" + krepseliosarasas[i].kiekis + Environment.NewLine;
+                    File.AppendAllText(path, createText);
+                }
+                double bepvm = 0;
+                for (int i = 0; i < krepseliosarasas.Count; i++)
+                {
+                    bepvm = bepvm + krepseliosarasas[i].ApskaiciuotaKainaBePvm();
+                }
+                string createbepvm = Convert.ToString(bepvm) + " Eur" + Environment.NewLine;
+                File.AppendAllText(path, createbepvm);
+                double supvm = 0;
+                for (int i = 0; i < krepseliosarasas.Count; i++)
+                {
+                    supvm = supvm + krepseliosarasas[i].ApskaiciuotaKainaSuPvm();
+                }
+                string createsupvm = Convert.ToString(supvm) + " Eur" + Environment.NewLine;
+                File.AppendAllText(path, createsupvm);
+                MessageBox.Show("Užsakymas patvirtintas\n\nČėkis išsaugotas C:\\Users\\12349\\Documents\\Cheque.txt");
+                done = 1;
+                this.Close();
         }
 
         private void button_Click(object sender, EventArgs e)
@@ -189,6 +223,99 @@ namespace mob_ireng
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+            if (naudotojas_prisijunges < 1)
+            {
+                this.Close();
+                f3 = new Form3();
+                f3.naudotojas_prisijunges = this.naudotojas_prisijunges;
+                f3.FormClosed += new FormClosedEventHandler(f3_FormClosed);
+                f3.ShowDialog();
+            }
+            else if (naudotojas_prisijunges > 0)
+            {
+                naudotojas_prisijunges = 0;
+                this.Close();
+            }
+        }
+
+        private void f3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            naudotojas_prisijunges = f3.naudotojas_prisijunges;
+            if (naudotojas_prisijunges > 0)
+            {
+                label5.Text = "Atsijungti";
+                label5.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                label5.Text = "Prisijungti/Registruotis";
+                label5.ForeColor = System.Drawing.Color.Green;
+            }
+            this.Close();
+        }
+
+        private void PictureBox4_Click(object sender, EventArgs e)
+        {
+            if (naudotojas_prisijunges < 1)
+            {
+                this.Hide();
+                f3 = new Form3();
+                f3.naudotojas_prisijunges = this.naudotojas_prisijunges;
+                f3.FormClosed += new FormClosedEventHandler(f3_FormClosed);
+                f3.ShowDialog();
+            }
+            else if (naudotojas_prisijunges > 1)
+            {
+                this.Hide();
+                f6 = new Form6();
+                f6.naudotojas_prisijunges = this.naudotojas_prisijunges;
+                f6.FormClosed += new FormClosedEventHandler(f6_FormClosed);
+                f6.ShowDialog();
+            }
+            else
+            {
+                this.Hide();
+                f7 = new Form7();
+                f7.naudotojas_prisijunges = this.naudotojas_prisijunges;
+                f7.FormClosed += new FormClosedEventHandler(f7_FormClosed);
+                f7.ShowDialog();
+            }
+        }
+
+        private void f7_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            naudotojas_prisijunges = f7.naudotojas_prisijunges;
+            if (naudotojas_prisijunges > 0)
+            {
+                label5.Text = "Atsijungti";
+                label5.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                label5.Text = "Prisijungti/Registruotis";
+                label5.ForeColor = System.Drawing.Color.Green;
+            }
+            this.Close();
+        }
+
+        private void f6_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            naudotojas_prisijunges = f6.naudotojas_prisijunges;
+            if (naudotojas_prisijunges > 0)
+            {
+                label5.Text = "Atsijungti";
+                label5.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                label5.Text = "Prisijungti/Registruotis";
+                label5.ForeColor = System.Drawing.Color.Green;
+            }
             this.Close();
         }
     }

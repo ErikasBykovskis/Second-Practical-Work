@@ -43,7 +43,7 @@ namespace mob_ireng
                 }
                 else if (prisijunges_naudotojas[0].username == "admin" && prisijunges_naudotojas[0].password == "admin")
                 {
-                    naudotojas_prisijunges = 2;
+                    naudotojas_prisijunges = 1;
                     MessageBox.Show("Prisijunge sistemos administratorius.");
                     this.Close();
                 }
@@ -52,16 +52,17 @@ namespace mob_ireng
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            if (naudotojas_prisijunges > 0)
-            {
-                label5.Text = "Atsijungti";
-                label5.ForeColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                label5.Text = "Prisijungti/Registruotis";
-                label5.ForeColor = System.Drawing.Color.Green;
-            }
+
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace mob_ireng
         Form2 f2;
         Form3 f3;
         Form6 f6;
-        Form8 f8;
+        Form7 f7;
         public int naudotojas_prisijunges = 0;
         public int height = 0;
         public int width = 0;
@@ -321,6 +321,7 @@ namespace mob_ireng
 
         private void PictureBox4_Click(object sender, EventArgs e) //mano_aplinka
         {
+            MessageBox.Show(naudotojas_prisijunges.ToString());
             if (naudotojas_prisijunges < 1)
             {
                 this.Hide();
@@ -340,16 +341,16 @@ namespace mob_ireng
             else
             {
                 this.Hide();
-                f8 = new Form8();
-                f8.naudotojas_prisijunges = this.naudotojas_prisijunges;
-                f8.FormClosed += new FormClosedEventHandler(f8_FormClosed);
-                f8.ShowDialog();
+                f7 = new Form7();
+                f7.naudotojas_prisijunges = this.naudotojas_prisijunges;
+                f7.FormClosed += new FormClosedEventHandler(f7_FormClosed);
+                f7.ShowDialog();
             }
         }
 
-        private void f8_FormClosed(object sender, FormClosedEventArgs e)
+        private void f7_FormClosed(object sender, FormClosedEventArgs e)
         {
-            naudotojas_prisijunges = f8.naudotojas_prisijunges;
+            naudotojas_prisijunges = f7.naudotojas_prisijunges;
             if (naudotojas_prisijunges > 0)
             {
                 label5.Text = "Atsijungti";
@@ -404,6 +405,10 @@ namespace mob_ireng
                 f3.naudotojas_prisijunges = this.naudotojas_prisijunges;
                 f3.FormClosed += new FormClosedEventHandler(f3_FormClosed);
                 f3.ShowDialog();
+            }
+            else if (naudotojas_prisijunges > 0)
+            {
+                naudotojas_prisijunges = 0;
             }
         }
 

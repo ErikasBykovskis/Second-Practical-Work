@@ -21,12 +21,21 @@ namespace mob_ireng
 
         private void Form8_Load(object sender, EventArgs e)
         {
+            if (naudotojas_prisijunges > 0)
+            {
+                label5.Text = "Atsijungti";
+                label5.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                label5.Text = "Prisijungti/Registruotis";
+                label5.ForeColor = System.Drawing.Color.Green;
+            }
             informacijos.set_informaciju_sarasas();
             List<garantija> garantiju_sarasas = informacijos.get_garantiju_sarasas();
             List<modelis> modeliu_sarasas = informacijos.get_modeliu_sarasas();
             List<gamintojas> gamintoju_sarasas = informacijos.get_gamintoju_sarasas();
             List<paveikslelis> paveiksleliu_sarasas = informacijos.get_paveiksleliu_sarasas();
-            MessageBox.Show(garantiju_sarasas[0].garantijos_galiojimo_baigimo_data.ToString());
             for(int i = 0; i < gamintoju_sarasas.Count; i++)
             {
                 comboBox1.Items.Add(gamintoju_sarasas[i].pavadinimas);
@@ -80,6 +89,20 @@ namespace mob_ireng
             MessageBox.Show(comboBox1.SelectedItem.ToString());
             informacijos.insert_informaciju_sarasas(comboBox1.SelectedItem.ToString(), comboBox2.SelectedItem.ToString(), comboBox3.SelectedItem.ToString(), comboBox4.SelectedItem.ToString(), Convert.ToDouble(textBox1.Text));
             MessageBox.Show("Nauja preke issaugota.");
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+            if (naudotojas_prisijunges > 0)
+            {
+                naudotojas_prisijunges = 0;
+                this.Close();
+            }
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -47,6 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="apmokejimo_repository.cs" />
+    <Compile Include="bankas.cs" />
+    <Compile Include="banku_repository.cs" />
+    <Compile Include="Form10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form10.Designer.cs">
+      <DependentUpon>Form10.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +107,7 @@
     <Compile Include="informacija.cs" />
     <Compile Include="informaciju_repository.cs" />
     <Compile Include="Krepselis.cs" />
+    <Compile Include="mobiliojo_irenginio_uzsakymo_repository.cs" />
     <Compile Include="naudotojas.cs" />
     <Compile Include="naudotoju_repository.cs" />
     <Compile Include="paveikslelis.cs" />
@@ -118,12 +128,17 @@
     <Compile Include="modelio_repository.cs" />
     <Compile Include="modelis.cs" />
     <Compile Include="paveiksleliu_repository.cs" />
+    <Compile Include="pirkejo_repository.cs" />
     <Compile Include="preke.cs" />
     <Compile Include="prekiu_repository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="uzsakymo_repository.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form10.resx">
+      <DependentUpon>Form10.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
