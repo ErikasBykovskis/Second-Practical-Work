@@ -37,6 +37,12 @@ namespace mob_ireng
             {
                 comboBox4.Items.Add(banku_sarasas[i].pavadinimas);
             }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            bankai.set_banku_sarasas();
+            List<bankas> banku_sarasas = bankai.get_banku_sarasas();
             for (int i = 0; i < banku_sarasas.Count; i++)
             {
                 if (comboBox4.SelectedItem.ToString() == banku_sarasas[i].pavadinimas)
@@ -44,10 +50,6 @@ namespace mob_ireng
                     laikinas_banko_id = banku_sarasas[i].id;
                 }
             }
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
             mob_ireng.set_mobiliuju_irenginu_sarasu_id();
             List<mobilieji_irenginiai> mobiliuju_irenginiu_sarasas = mob_ireng.get_mobiliuju_irenginiu_sarasu_id();
 

@@ -37,7 +37,7 @@ namespace mob_ireng
             {
                 this.Close();
             }
-            else this.ShowDialog();
+            else this.Show();
         }
 
         private void Button2_Click(object sender, EventArgs e) //registracija
@@ -56,7 +56,7 @@ namespace mob_ireng
             {
                 this.Close();
             }
-            else this.ShowDialog();
+            else this.Show();
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
